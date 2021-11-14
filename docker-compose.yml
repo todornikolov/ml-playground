@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  app:
+    container_name: hack-meal-ml
+    working_dir: /tf
+    build:
+      context: docker
+      args:
+        - runtime=nvidia
+    volumes:
+      - .:/tf
+    networks:
+      - local-hack-network
+
+networks:
+  local-hack-network:
+    driver: "bridge"
